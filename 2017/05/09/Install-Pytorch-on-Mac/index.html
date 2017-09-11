@@ -1,0 +1,34 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><meta name="X-UA-Compatible" content="IE=edge"><title> Install PyTorch on Mac · Jerry's Blog</title><meta name="description" content="Install PyTorch on Mac - Jerry Cai"><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="icon" href="/favicon.ico"><link rel="stylesheet" href="/css/prontera.css"><link rel="search" type="application/opensearchdescription+xml" href="http://jerryjinjin.github.io/atom.xml" title="Jerry's Blog"></head><body><header class="feature-header"><nav class="component-nav"><ul><div class="logo-container"><a href="/"><h2 class="title">Jerry's Blog</h2></a></div><a href="/" target="_self" class="li component-nav-item"><p>INDEX</p></a><a href="/archives" target="_self" class="li component-nav-item"><p>ARCHIVES</p></a><ul class="shortcut-icons"><a href="https://github.com/AngryPowman" target="_blank"><img src="/images/github.svg" class="icon"></a><a href="/atom.xml" target="_blank"><img src="/images/rss.svg" class="icon"></a></ul></ul></nav></header><main class="container"><div id="post-container"><div class="post"><article class="post-block"><h1 class="post-title">Install PyTorch on Mac</h1><div class="post-info">May 9, 2017</div><div class="post-content"><p>PyTorch 官网： <a>pytorch.org</a></p>
+<ul>
+<li>根据官网上提供命令进行安装，此处是在OSX系统下通过conda进行安装。</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">conda install pytorch torchvision -c soumith</div></pre></td></tr></table></figure>
+<ul>
+<li>但是使用conda安装失败，出现类似于下面的错误信息。</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">requests.exceptions.HTTPError: 401 Client Error: UNAUTHORIZED for url</div><div class="line">conda.exceptions.CondaRuntimeError: Runtime error: HTTPError: 401 Client Error</div></pre></td></tr></table></figure>
+<ul>
+<li>使用如下命令解决了该问题。</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">conda update -c defaults conda</div></pre></td></tr></table></figure>
+<ul>
+<li>重新执行安装命令，顺利安装完毕。</li>
+<li>接下来测试是否能够正常使用PyTorch，在python环境下执行<code>import torch</code>,出现如下错误。</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">import torch</div><div class="line">Traceback (most recent call last):</div><div class="line">File &quot;&quot;, line 1, in </div><div class="line">File &quot;/usr/local/lib/python3.6/site-packages/torch/init.py&quot;, line 53, in </div><div class="line">from torch._C import *</div><div class="line">ImportError: dlopen(/usr/local/lib/python3.6/site-packages/torch/_C.cpython-36m-darwin.so, 10): Symbol not found: _PySlice_AdjustIndices</div><div class="line">Referenced from: /usr/local/lib/python3.6/site-packages/torch/_C.cpython-36m-darwin.so</div><div class="line">Expected in: flat namespace</div><div class="line">in /usr/local/lib/python3.6/site-packages/torch/_C.cpython-36m-darwin.so</div></pre></td></tr></table></figure>
+<ul>
+<li>可能是由于PyTorch版本的问题，删除之前安装的PyTorch，重新执行下面的安装命令，安装0.1.11版本（默认是安装最新版本0.1.12）。</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">conda install pytorch=0.1.11 torchvision -c soumith</div></pre></td></tr></table></figure>
+<ul>
+<li>安装完毕，可以正常使用了。</li>
+</ul>
+</div></article></div><div id="disqus_thread"></div></div><script>var disqus_shortname = 'angrypowman';
+var disqus_identifier = '2017/05/09/Install-Pytorch-on-Mac/';
+var disqus_title = 'Install PyTorch on Mac';
+var disqus_url = 'http://jerryjinjin.github.io/2017/05/09/Install-Pytorch-on-Mac/';
+(function() {
+    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+})();</script><script id="dsq-count-scr" src="//angrypowman.disqus.com/count.js" async></script></main><footer class="footer-container"><div class="paginator"><a href="/2017/04/27/hello-world/" class="prev">上一篇</a></div><div class="copyright"><p>© 2017 <a href="http://jerryjinjin.github.io">Jerry Cai</a>, powered by <a href="https://hexo.io/" target="_blank">Hexo</a> and <a href="https://github.com/AngryPowman/hexo-theme-prontera" target="_blank">hexo-theme-prontera</a>.</p></div></footer><script>(function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;e=o.createElement(i);r=o.getElementsByTagName(i)[0];e.src='//www.google-analytics.com/analytics.js';r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));ga('create',"angrypowman",'auto');ga('send','pageview');</script></body></html>
