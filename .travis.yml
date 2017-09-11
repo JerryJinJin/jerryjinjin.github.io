@@ -24,7 +24,7 @@ after_script:
 
 branches:
   only:
-    - blog-source
+    - blog_source
 env:
  global:
    - GH_REF: github.com/JerryJinJin/jerryjinjin.github.io.git</code>
