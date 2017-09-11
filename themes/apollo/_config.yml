@@ -1,0 +1,21 @@
+menu:
+    Jerry's Blog: /
+    About: /AboutMe
+    Archive: /archives/
+    Rss: /atom.xml
+
+favicon: /psyduck.png
+logo: /psyduck.png
+
+# Comment
+# e.g disqus: seansun
+disqus:
+duoshuo:
+cloudTie:
+
+# Analytics
+# google-analytics:
+ga: UA-65933410-1
+
+# Copyright Infomation
+startyear: 2015
