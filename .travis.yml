@@ -1,36 +1,22 @@
-<code class="language-yum hljs http">language: node_js
-node_js: stable
-
-# S: Build Lifecycle
+language: node_js
+node_js:
+- "4"
 install:
-  - npm install hexo-cli -g
-  - npm install hexo-deployer-git --save
-  - npm install
-
-
-#before_script:
- # - npm install -g gulp
-
+- npm install hexo-cli -g
+- npm install hexo-deployer-git --save
+- npm install
+before_script:
+- git config user.name "JerryJinJin"
+- git config user.email "caijinjin4@gmail.com"
+- sed -i'' "s~git@github.com:JerryJinJin/jerryjinjin.github.io.git~https://${REPO_TOKEN}:x-oauth-basic@github.com/JerryJinJin/jerryjinjin.github.io.git~" _config.yml
 script:
-  - hexo clean
-  - hexo g
-
-after_script:
-  - cd ./public
-  - git init
-  - git config user.name "JerryCai"
-  - git config user.email "caijinjin4@gmail.com"
-  - git add .
-  - git commit -m "Update changes in blog docs"
-  - git push --force --quiet "https://${GH_TOKEN}@${GH_REF}" master:master
-# E: Build LifeCycle
-
+- hexo clean
+- hexo g
 after_success:
-  - hexo deploy
-
+- hexo deploy
 branches:
   only:
-    - blog_source
+  - blog_source
 env:
- global:
-   - GH_REF: github.com/JerryJinJin/jerryjinjin.github.io.git</code>
+  global:
+  - secure: s2gz4ysoEOpw7QskCabl6crIKBNxm/fE1U44vSSdfapJ/45xplf+yqjlLshwnBGeqOi0DWy0jML2mWhM1RqdMbY5nG0J3z1kpGB7BE0EuSVOlukkgmi0OiK2gyKFM12y4cqKuCqG3dMzHzm1/8yrRoXpj3gnNTTTzOwR4utMYqmgfWGxJon4b0RogKpx5xH7XEMKgDQvZV8cGfci6tpBr03Gogty/umHJ5CH6v1ISlJf2wmr+EN+7LFVKWFTKhvBEJvpmAR+gwlrCayxe7KXMsvLGUAN8/VGKCx0MRfWuqQ0eF04xT0t3j9WoENhiN9IYlor6bbtnHGWeowFjGSroDSOiVL++wQQ3UkaXy7F/U3PIYmX5dfo+IM2Uo8iSTh17BNqVWhRuFk00PVLX+HGSCKXma16PkVHMm9wrhHX7QYDteDJpYpkFAxMBLReS7Dkh6E96ZW5X4tAL/BtFamd3sNHQuEgm8LegiDvfVL3Mj1jm4rYCkR7qRhAwsfCeacfw63bFGzO2Wvb4LZh/jZCokYKGCeDi3pr+sNXLQbEDEG1y7VvpannKUx6WklmhqDBQsMTkzi3lfi9OAPPuHWRX2EJrreDb4HHNZbVifQ5/Acee7i4JqNYv8np3xbqMovKI79f24r0CjKFmeGs+YGJ8BG8mMknm++Pwyt3TUaJ6YE=
