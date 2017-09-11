@@ -69,5 +69,5 @@ theme: prontera
 ## Docs: https://hexo.io/docs/deployment.html
 deploy:
   type: git
-  repo: https://github.com/JerryJinJin/jerryjinjin.github.io.git
+  repo: git@github.com:JerryJinJin/jerryjinjin.github.io.git
   branch: master
