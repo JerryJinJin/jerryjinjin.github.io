@@ -63,11 +63,35 @@ pagination_dir: page
 # Extensions
 ## Plugins: https://hexo.io/plugins/
 ## Themes: https://hexo.io/themes/
-theme: landscape
+theme: archer
 
 # Deployment
 ## Docs: https://hexo.io/docs/deployment.html
 deploy:
   type: git
-  repo: git@github.com:JerryJinJin/jerryjinjin.github.io.git
+  repo: git@github.com:PsyDuckk/psyduckk.github.io.git
   branch: master
+
+#Sidebar
+jsonContent:
+  meta: false
+  pages: fales
+  posts:
+    title: true
+    data: true
+    path: true
+    text: false
+    raw: false
+    content: false
+    slug: false
+    updated: false
+    comments: false
+    link: false
+    permalink: false
+    excerpt: false
+    categories: false
+    tags: true
+    
+#About Page
+about:
+  enable: false
